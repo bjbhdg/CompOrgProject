@@ -7,8 +7,11 @@ using std::endl;
 
 int main()
 {
-    string myMultiplicand = "000001";
-    string myMultiplier = "000001";
+    // 1010001100000
+    // 0000011001110
+
+    string myMultiplicand = "001011";
+    string myMultiplier = "011001";
     string myComplementedMultiplicand = twosComplement(myMultiplicand);
 
     // ========================================================================
@@ -24,9 +27,9 @@ int main()
     int numSubtractions = 0;
     int numIterations = 0;
 
-    string iterationDivisior = "";
+    string iterationDivider = "";
     for (int i = 0; i < normalBoothsAlgBitString.print().length(); ++i)
-        iterationDivisior += "-";
+        iterationDivider += "-";
 
     // The number of iterations performed in Booth's Algorithm is equivalent to
     // the size of either the multiplicand and the multiplier (since each are
@@ -37,7 +40,7 @@ int main()
         string normalBoothsAlgCheck = normalBoothsAlgBitString.getLastTwoBits();
 
         if (i > 0)
-            cout << iterationDivisior << endl;
+            cout << iterationDivider << endl;
 
         // "00" or "11" found, only shift right.
         if (normalBoothsAlgCheck == "00" || normalBoothsAlgCheck == "11")
@@ -75,7 +78,7 @@ int main()
         ++numIterations;
     }
 
-    cout << iterationDivisior << '\n' << normalBoothsAlgBitString.print() << " | DONE" << endl;
+    cout << iterationDivider << '\n' << normalBoothsAlgBitString.print() << " | DONE" << endl;
 
     cout << "\nResult: " << normalBoothsAlgBitString.getProduct() << endl;
     cout << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
@@ -116,9 +119,9 @@ int main()
     numSubtractions = 0;
     numIterations = 0;
 
-    iterationDivisior = "";
+    iterationDivider = "";
     for (int i = 0; i < modifiedBoothsAlgBitString.print().length(); ++i)
-        iterationDivisior += "-";
+        iterationDivider += "-";
 
     // In the case of Modified Booth's Algorithm, the total number of
     // iterations performed is equivalent to half of the size of either the
@@ -129,7 +132,7 @@ int main()
         string modifiedBoothsAlgCheck = modifiedBoothsAlgBitString.getLastThreeBits();
 
         if (i > 0)
-            cout << iterationDivisior << endl;
+            cout << iterationDivider << endl;
 
         // "000" or "111" found, only shift right twice.
         if (modifiedBoothsAlgCheck == "000" || modifiedBoothsAlgCheck == "111")
@@ -189,7 +192,7 @@ int main()
         ++numIterations;
     }
 
-    cout << iterationDivisior << '\n' << modifiedBoothsAlgBitString.print() << " | DONE" << endl;
+    cout << iterationDivider << '\n' << modifiedBoothsAlgBitString.print() << " | DONE" << endl;
 
     cout << "\nResult: " << modifiedBoothsAlgBitString.getProduct() << endl;
     cout << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
