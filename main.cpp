@@ -20,22 +20,29 @@ int main()
 
     int numAdditions = 0;
     int numSubtractions = 0;
+    int numIterations = 0;
 
     string iterationDivisior = "";
     for (int i = 0; i < normalBoothsAlgBitString.print().length(); ++i)
         iterationDivisior += "-";
 
+    // The number of iterations performed in Booth's Algorithm is equivalent to
+    // the size of either the multiplicand and the multiplier (since each are
+    // the same size).
     for(int i = 0; i < myMultiplicand.length(); i++)
     {
+        // Get last two bits of ACQE.
         string normalBoothsAlgCheck = normalBoothsAlgBitString.getLastTwoBits();
 
         if (i > 0)
             cout << iterationDivisior << endl;
 
+        // "00" or "11" found, only shift right.
         if (normalBoothsAlgCheck == "00" || normalBoothsAlgCheck == "11")
         {
             cout << normalBoothsAlgBitString.print() << " | " << normalBoothsAlgCheck << " - SHR" << endl;
         }
+        // "01" found, add multiplicand then shift right.
         else if (normalBoothsAlgCheck == "01")
         {
             cout << normalBoothsAlgBitString.print() << " | " << normalBoothsAlgCheck << " - ADD" << endl;
@@ -47,6 +54,7 @@ int main()
 
             ++numAdditions;
         }
+        // "10" found, subtract multiplicand then shift right.
         else if (normalBoothsAlgCheck == "10")
         {
             cout << normalBoothsAlgBitString.print() << " | " << normalBoothsAlgCheck << " - SUB" << endl;
@@ -59,13 +67,17 @@ int main()
             ++numSubtractions;
         }
 
+        // Every outcome of getLastTwoBits() will be shifted right here.
         normalBoothsAlgBitString.shiftRight();
+
+        ++numIterations;
     }
 
     cout << iterationDivisior << '\n' << normalBoothsAlgBitString.print() << " | DONE" << endl;
 
     cout << "\nResult: " << normalBoothsAlgBitString.getProduct() << endl;
     cout << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
+    cout << "Total Number of Iterations: " << numIterations << endl;
 
     // The following block performs Modified Booth's Algorithm.
 
@@ -80,6 +92,7 @@ int main()
         else
             myMultiplicand = '0' + myMultiplicand;
 
+        // Do the same for the multiplier as the multiplicand.
         if (myMultiplier[0] == '1')
             myMultiplier = '1' + myMultiplier;
         else
@@ -97,22 +110,29 @@ int main()
 
     numAdditions = 0;
     numSubtractions = 0;
+    numIterations = 0;
 
     iterationDivisior = "";
     for (int i = 0; i < modifiedBoothsAlgBitString.print().length(); ++i)
         iterationDivisior += "-";
 
+    // In the case of Modified Booth's Algorithm, the total number of
+    // iterations performed is equivalent to half of the size of either the
+    // multiplicand or the multiplier.
     for(int i = 0; i < myMultiplicand.length() / 2; ++i)
     {
+        // Get last three bits of ACQE.
         string modifiedBoothsAlgCheck = modifiedBoothsAlgBitString.getLastThreeBits();
 
         if (i > 0)
             cout << iterationDivisior << endl;
 
+        // "000" or "111" found, only shift right twice.
         if (modifiedBoothsAlgCheck == "000" || modifiedBoothsAlgCheck == "111")
         {
             cout << modifiedBoothsAlgBitString.print() << " | " << modifiedBoothsAlgCheck << " - SHR x2" << endl;
         }
+        // "001" or "010" found, add multiplicand then shift right twice.
         else if (modifiedBoothsAlgCheck == "001" || modifiedBoothsAlgCheck == "010")
         {
             cout << modifiedBoothsAlgBitString.print() << " | " << modifiedBoothsAlgCheck << " - ADD" << endl;
@@ -123,6 +143,7 @@ int main()
 
             cout << modifiedBoothsAlgBitString.print() << " | SHR x2" << endl;
         }
+        // "011" found, add two times the multiplicand then shift right twice.
         else if (modifiedBoothsAlgCheck == "011")
         {
             cout << modifiedBoothsAlgBitString.print() << " | " << modifiedBoothsAlgCheck << " - ADD x2" << endl;
@@ -133,6 +154,7 @@ int main()
 
             cout << modifiedBoothsAlgBitString.print() << " | SHR x2" << endl;
         }
+        // "100" found, subtract two times the multiplicand then shift right twice.
         else if (modifiedBoothsAlgCheck == "100")
         {
             cout << modifiedBoothsAlgBitString.print() << " | " << modifiedBoothsAlgCheck << " - SUB x2" << endl;
@@ -144,6 +166,7 @@ int main()
             cout << modifiedBoothsAlgBitString.print() << " | SHR x2" << endl;
 
         }
+        // "101' or "110" found, subtract the multiplicand then shift right twice.
         else if (modifiedBoothsAlgCheck == "101" || modifiedBoothsAlgCheck == "110")
         {
             cout << modifiedBoothsAlgBitString.print() << " | " << modifiedBoothsAlgCheck << " - SUB" << endl;
@@ -155,14 +178,18 @@ int main()
             cout << modifiedBoothsAlgBitString.print() << " | SHR x2" << endl;
         }
 
+        // Every outcome of getLastTwoBits() will be shifted right twice here.
         modifiedBoothsAlgBitString.shiftRight();
         modifiedBoothsAlgBitString.shiftRight();
+
+        ++numIterations;
     }
 
     cout << iterationDivisior << '\n' << modifiedBoothsAlgBitString.print() << " | DONE" << endl;
 
     cout << "\nResult: " << modifiedBoothsAlgBitString.getProduct() << endl;
     cout << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
+    cout << "Total Number of Iterations: " << numIterations << endl;
 
     return 0;
 }
