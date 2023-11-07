@@ -11,7 +11,9 @@ int main()
     string myMultiplier = "000001";
     string myComplementedMultiplicand = twosComplement(myMultiplicand);
 
-    // The following block performs normal Booth's Algorithm.
+    // ========================================================================
+    // The following block performs normal Booth's Algorithm.                 |
+    // ========================================================================
     cout << "Normal Booth's Algorithm:\n" << endl;
 
     BoothsAlgBitString normalBoothsAlgBitString(myMultiplier);
@@ -78,9 +80,11 @@ int main()
     cout << "\nResult: " << normalBoothsAlgBitString.getProduct() << endl;
     cout << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
     cout << "Total Number of Iterations: " << numIterations << endl;
+    // ========================================================================
 
-    // The following block performs Modified Booth's Algorithm.
-
+    // ========================================================================
+    // The following block performs Modified Booth's Algorithm.               |
+    // ========================================================================
     // For Modified Booth's Algorithm, the length of the words needs to be even, if it is not, then we must
     // pad the two bits to the next greatest even length accordingly.
     if (myMultiplicand.length() % 2 != 0 || myMultiplier.length() % 2 != 0)
@@ -190,6 +194,8 @@ int main()
     cout << "\nResult: " << modifiedBoothsAlgBitString.getProduct() << endl;
     cout << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
     cout << "Total Number of Iterations: " << numIterations << endl;
+
+    // ========================================================================
 
     return 0;
 }
