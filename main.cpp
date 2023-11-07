@@ -194,7 +194,6 @@ int main()
     cout << "\nResult: " << modifiedBoothsAlgBitString.getProduct() << endl;
     cout << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
     cout << "Total Number of Iterations: " << numIterations << endl;
-
     // ========================================================================
 
     return 0;
