@@ -175,7 +175,7 @@ int main()
         // Format output to external file to show statistics of normal Booth's Algorithm.
         if (writingToOutput)
         {
-            simulatorOutput << "\nBooth's Algorithm:\n" << "Result: " << normalBoothsAlgBitString.getProduct() << endl;
+            simulatorOutput << "\nBooth's Algorithm:\n\n" << "Result: " << normalBoothsAlgBitString.getProduct() << endl;
             simulatorOutput << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
             simulatorOutput << "Total Number of Iterations: " << numIterations << endl;
         }
@@ -295,7 +295,7 @@ int main()
         // Format output to external file to show statistics of Modified Booth's Algorithm.
         if (writingToOutput)
         {
-            simulatorOutput << "\nModified Booth's Algorithm:\n" << "Result: " << modifiedBoothsAlgBitString.getProduct() << endl;
+            simulatorOutput << "\nModified Booth's Algorithm:\n\n" << "Result: " << modifiedBoothsAlgBitString.getProduct() << endl;
             simulatorOutput << "Number of Additions Used: " << numAdditions << "\nNumber of Subtractions Used: " << numSubtractions << endl;
             simulatorOutput << "Total Number of Iterations: " << numIterations << endl;
             simulatorOutput << "===============================================\n" << endl;
