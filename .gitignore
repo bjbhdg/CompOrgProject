@@ -1,3 +1,6 @@
+# Ignore streamed output from main.cpp
+simulatorOutput.txt
+
 # Prerequisites
 *.d
 
