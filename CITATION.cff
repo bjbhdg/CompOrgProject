@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+authors:
+- family-names: "Besselman"
+  given-names: "Bryan"
+- family-names: "Tyree"
+  given-names: "Wesley"
+title: "Computer Organization Course Project"
+date-released: 2023-11-15
+url: "https://github.com/bjbhdg/CompOrgProject"
